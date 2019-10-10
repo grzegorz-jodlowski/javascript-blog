@@ -65,38 +65,41 @@
 
         console.log("funkcja ruszyła...");
 
-        /* remove all links from "ALL POSTS" column */
+        /* [DONE] remove all links from "ALL POSTS" column */
 
-        let linksList = document.querySelectorAll('.list.titles li');
+        document.querySelector('.list.titles').innerHTML = "";
 
-        for (let link of linksList) {
+        /* catch all articles */
 
-            link.outerHTML = '';
+        const articles = document.querySelectorAll('.post');
+        console.log(articles);
+
+        /* in all articles: */
+        /*find id of article and save it to variable */
+        for (let article of articles) {
+
+
+            const articleId = article.getAttribute('id');
+            console.log(articleId);
+
+
+            /* find element with title and save it to variable */
+
+            const articleTitle = article.querySelector('.post-title').innerHTML;
+            console.log(articleTitle);
+
+            /* create HTML code based on id and title and save it to variable */
+
+            const htmlCode = `<a href="#${articleId}"><span>${articleTitle}</span></a>`
+            console.log(htmlCode);
+
+            /* insert new HTML code to "ALL POSTS" column */
+            let li = document.createElement('li');
+            li.innerHTML = htmlCode;
+            const ulList = document.querySelector('ul').appendChild(li);
+
+            console.log(ulList);
         }
-
-        /* for all articles:
-        find id of article and save it to variable */
-        const articleId = document.querySelector('.post').getAttribute('id');
-        console.log(articleId);
-
-
-        /* find element with title and save it to variable */
-        const articleTitle = document.querySelector('.post-title').innerHTML;
-        console.log(articleTitle);
-
-        /* create HTML code based on id and title and save it to variable */
-
-        const htmlCode = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`
-        console.log(htmlCode);
-
-        /* insert new HTML code to "ALL POSTS" column */
-        const ulList = document.querySelector('ul');
-        ulList.innerHTML = htmlCode;
-
-        console.log(ulList);
-
-
-
     }
 
     generateTitleLinks();
