@@ -76,12 +76,24 @@
 
         /* for all articles:
         find id of article and save it to variable */
+        const articleId = document.querySelector('.post').getAttribute('id');
+        console.log(articleId);
+
 
         /* find element with title and save it to variable */
+        const articleTitle = document.querySelector('.post-title').innerHTML;
+        console.log(articleTitle);
 
         /* create HTML code based on id and title and save it to variable */
 
+        const htmlCode = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`
+        console.log(htmlCode);
+
         /* insert new HTML code to "ALL POSTS" column */
+        const ulList = document.querySelector('ul');
+        ulList.innerHTML = htmlCode;
+
+        console.log(ulList);
 
 
 
