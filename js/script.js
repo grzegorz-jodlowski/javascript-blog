@@ -1,13 +1,9 @@
 {
     'use strict;'
 
-    // document.getElementById('test-button').addEventListener('click', function(){
-    //     const links = document.querySelectorAll('.titles a');
-    //     console.log('links:', links);
-    //     for(let link of links){
-    //         console.log(link.innerText);
-    //       }
-    //   });
+    const optArticleSelector = '.post',
+        optTitleSelector = '.post-title',
+        optTitleListSelector = '.titles';
 
     const titleClickHandler = function (event) {
         event.preventDefault();
@@ -54,12 +50,6 @@
 
     }
 
-    const links = document.querySelectorAll('.titles a');
-
-    for (let link of links) {
-        link.addEventListener('click', titleClickHandler);
-    }
-
 
     function generateTitleLinks() {
 
@@ -67,12 +57,15 @@
 
         /* [DONE] remove all links from "ALL POSTS" column */
 
-        document.querySelector('.list.titles').innerHTML = "";
+        const titleList = document.querySelector(optTitleListSelector);
+        titleList.innerHTML = "";
 
         /* catch all articles */
 
-        const articles = document.querySelectorAll('.post');
+        const articles = document.querySelectorAll(optArticleSelector);
         console.log(articles);
+
+        // to third method: let entireHTML = "";
 
         /* in all articles: */
         /*find id of article and save it to variable */
@@ -85,20 +78,32 @@
 
             /* find element with title and save it to variable */
 
-            const articleTitle = article.querySelector('.post-title').innerHTML;
+            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
             console.log(articleTitle);
 
             /* create HTML code based on id and title and save it to variable */
 
-            const htmlCode = `<a href="#${articleId}"><span>${articleTitle}</span></a>`
+            const htmlCode = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`
             console.log(htmlCode);
 
             /* insert new HTML code to "ALL POSTS" column */
-            let li = document.createElement('li');
-            li.innerHTML = htmlCode;
-            const ulList = document.querySelector('ul').appendChild(li);
 
-            console.log(ulList);
+            // first method (bad one): titleList.innerHTML += htmlCode;
+            // second method:
+            titleList.insertAdjacentHTML("beforeend", htmlCode);
+            // third method: entireHTML += htmlCode;
+            // fourth method (without <li></li> in htmlCode):
+            // let li = document.createElement('li');
+            // li.innerHTML = htmlCode;
+            // titleList.appendChild(li);
+
+        }
+        // to third method: titleList.innerHTML = entireHTML;
+
+        const links = document.querySelectorAll('.titles a');
+
+        for (let link of links) {
+            link.addEventListener('click', titleClickHandler);
         }
     }
 
