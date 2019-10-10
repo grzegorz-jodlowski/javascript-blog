@@ -37,18 +37,18 @@
             activeArticle.classList.remove('active');
         }
 
-        /* get 'href' attribute from the clicked link */
+        /* [DONE] get 'href' attribute from the clicked link */
 
         const hrefAtribute = clickedElement.getAttribute('href')
 
         console.log(hrefAtribute);
 
-        /* find the correct article using the selector (value of 'href' attribute) */
+        /* [DONE] find the correct article using the selector (value of 'href' attribute) */
 
         const clickedArticle = document.querySelector(hrefAtribute);
 
         console.log(clickedArticle);
-        /* add class 'active' to the correct article */
+        /* [DONE] add class 'active' to the correct article */
 
         clickedArticle.classList.add('active');
 
@@ -60,6 +60,34 @@
         link.addEventListener('click', titleClickHandler);
     }
 
+
+    function generateTitleLinks() {
+
+        console.log("funkcja ruszyła...");
+
+        /* remove all links from "ALL POSTS" column */
+
+        let linksList = document.querySelectorAll('.list.titles li');
+
+        for (let link of linksList) {
+
+            link.outerHTML = '';
+        }
+
+        /* for all articles:
+        find id of article and save it to variable */
+
+        /* find element with title and save it to variable */
+
+        /* create HTML code based on id and title and save it to variable */
+
+        /* insert new HTML code to "ALL POSTS" column */
+
+
+
+    }
+
+    generateTitleLinks();
 
 
 }
