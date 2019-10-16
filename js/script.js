@@ -3,7 +3,8 @@
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagSelector = '.post-tags .list';
+    optArticleTagSelector = '.post-tags .list',
+    optArticleAuthorSelector = '.post-author';
 
   const titleClickHandler = function (event) {
     event.preventDefault();
@@ -243,5 +244,45 @@
 
   addClickListenersToTags();
 
+  function generateAuthors() {
+
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log(articles);
+
+    for (let article of articles) {
+
+      const authorAtribute = article.getAttribute('data-author');
+      console.log(authorAtribute);
+
+      const authorTitle = article.querySelector(optArticleAuthorSelector);
+      console.log(authorTitle);
+
+      authorTitle.innerHTML = '<a href="#">by ' + authorAtribute + '</a>';
+    }
+  }
+
+  generateAuthors();
+
+
+  function authorClichHandler(event) {
+    console.log('gra!');
+
+  }
+
+  function addClickListenersToAuthors() {
+
+    const authorLinks = document.querySelectorAll(optArticleAuthorSelector + ' a');
+    console.log(authorLinks);
+
+    for (let link of authorLinks) {
+
+      link.addEventListener('click', authorClichHandler);
+    }
+
+
+
+  }
+
+  addClickListenersToAuthors();
 
 }
