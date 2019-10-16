@@ -5,7 +5,9 @@
     optTitleListSelector = '.titles',
     optArticleTagSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.tags.list';
+    optTagsListSelector = '.tags.list',
+    optCloudClassCount = 5,
+    optCloudClassPrefix = 'tag-size-';
 
   const titleClickHandler = function (event) {
     event.preventDefault();
@@ -391,6 +393,11 @@
     };
   }
 
+  function calculateTagClass(count, params) {
+
+
+  }
+
   function generateTagsList() {
 
     /* [DONE] create a new variable allTags with an empty object */
@@ -460,7 +467,7 @@
 
       /* [DONE] generate code of a link and add it to allTagsHTML */
 
-      allTagsHTML += `<li><a href="#tag-${tag}">${tag}(${allTags[tag]})</a></li>`;
+      allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag}(${allTags[tag]})</a></li>`;
 
       /* [DONE] END LOOP: for each tag in allTags */
 
