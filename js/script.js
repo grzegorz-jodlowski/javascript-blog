@@ -4,7 +4,8 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author';
+    optArticleAuthorSelector = '.post-author',
+    optTagsListSelector = '.tags.list';
 
   const titleClickHandler = function (event) {
     event.preventDefault();
@@ -372,5 +373,76 @@
   }
 
   addClickListenersToAuthors();
+
+  function generateTagsList() {
+    /* [DONE] create a new variable allTags with an empty array */
+
+    let allTags = [];
+
+    /* [DONE] find all articles */
+
+    const everyArticles = document.querySelectorAll(optArticleSelector);
+    console.log(everyArticles);
+
+    /* [DONE] START LOOP: for every article: */
+
+    for (let article of everyArticles) {
+
+      console.log(article);
+
+      /* [DONE] make html variable with empty string */
+
+      let entireHtml = '';
+      console.log(entireHtml);
+
+      /* [DONE] get tags from data-tags attribute */
+
+      const articleTagsStr = article.getAttribute('data-tags');
+      console.log(articleTagsStr);
+
+      /* [DONE] split tags into array */
+
+      const articleTagsArr = articleTagsStr.split(' ');
+      console.log(articleTagsArr);
+
+      /* [DONE] START LOOP: for each tag */
+
+      for (let element of articleTagsArr) {
+
+        /* [DONE] generate HTML of the link */
+
+        const elementHtml = `<li><a href="#tag-${element}">${element}</a></li>`;
+        console.log(elementHtml);
+
+        /* [DONE] add generated code to html variable */
+
+        entireHtml += elementHtml;
+        console.log(entireHtml);
+
+        /* [DONE] check if this link is NOT already in allTags */
+
+        if (allTags.indexOf(elementHtml) == -1) {
+
+          /* [DONE] add generated code to allTags array */
+
+          allTags.push(elementHtml);
+        }
+
+        /* [DONE] END LOOP: for each tag */
+
+      }
+
+      /* [DONE] END LOOP: for every article: */
+
+    }
+
+    /* [DONE] find list of tags in right column */
+    const tagList = document.querySelector(optTagsListSelector);
+
+    /* [DONE] add html from allTags to tagList */
+    tagList.innerHTML = allTags.join(' ');
+  }
+
+  generateTagsList();
 
 }
