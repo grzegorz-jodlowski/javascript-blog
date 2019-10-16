@@ -375,9 +375,10 @@
   addClickListenersToAuthors();
 
   function generateTagsList() {
-    /* [DONE] create a new variable allTags with an empty array */
 
-    let allTags = [];
+    /* [DONE] create a new variable allTags with an empty object */
+
+    let allTags = {};
 
     /* [DONE] find all articles */
 
@@ -387,13 +388,6 @@
     /* [DONE] START LOOP: for every article: */
 
     for (let article of everyArticles) {
-
-      console.log(article);
-
-      /* [DONE] make html variable with empty string */
-
-      let entireHtml = '';
-      console.log(entireHtml);
 
       /* [DONE] get tags from data-tags attribute */
 
@@ -407,25 +401,21 @@
 
       /* [DONE] START LOOP: for each tag */
 
-      for (let element of articleTagsArr) {
+      for (let tag of articleTagsArr) {
 
-        /* [DONE] generate HTML of the link */
+        /* [DONE] check if this tag is NOT already in allTags */
 
-        const elementHtml = `<li><a href="#tag-${element}">${element}</a></li>`;
-        console.log(elementHtml);
+        if (!allTags.hasOwnProperty(tag)) {
 
-        /* [DONE] add generated code to html variable */
+          /* [DONE] add tag to allTAgs object */
 
-        entireHtml += elementHtml;
-        console.log(entireHtml);
+          allTags[tag] = 1;
 
-        /* [DONE] check if this link is NOT already in allTags */
+        } else {
 
-        if (allTags.indexOf(elementHtml) == -1) {
+          /* if it was add 1 */
 
-          /* [DONE] add generated code to allTags array */
-
-          allTags.push(elementHtml);
+          allTags[tag]++;
         }
 
         /* [DONE] END LOOP: for each tag */
@@ -437,10 +427,30 @@
     }
 
     /* [DONE] find list of tags in right column */
+
     const tagList = document.querySelector(optTagsListSelector);
 
-    /* [DONE] add html from allTags to tagList */
-    tagList.innerHTML = allTags.join(' ');
+    /* [DONE] create variable for all links HTML code */
+
+    let allTagsHTML = '';
+
+    /* [DONE] START LOOP: for each tag in allTags */
+
+    for (let tag in allTags) {
+
+      /* [DONE] generate code of a link and add it to allTagsHTML */
+
+      allTagsHTML += `<li><a href="#tag-${tag}">${tag}(${allTags[tag]})</a></li>`;
+
+      /* [DONE] END LOOP: for each tag in allTags */
+
+    }
+
+    /* [DONE] add html from allTagsHTML to tagList */
+
+    tagList.innerHTML = allTagsHTML;
+
+
   }
 
   generateTagsList();
