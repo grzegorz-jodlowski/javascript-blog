@@ -374,6 +374,23 @@
 
   addClickListenersToAuthors();
 
+  function calculateTagsParams(tags) {
+
+    const counter = [];
+
+    for (let tag in tags) {
+
+      counter.push(tags[tag]);
+
+    }
+    console.log(counter);
+    return {
+      min: Math.min(...counter),
+      max: Math.max(...counter)
+
+    };
+  }
+
   function generateTagsList() {
 
     /* [DONE] create a new variable allTags with an empty object */
@@ -429,6 +446,9 @@
     /* [DONE] find list of tags in right column */
 
     const tagList = document.querySelector(optTagsListSelector);
+
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('tagsParams:', tagsParams);
 
     /* [DONE] create variable for all links HTML code */
 
