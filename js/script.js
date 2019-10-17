@@ -255,6 +255,7 @@
       /* [DONE] END LOOP: for each link */
 
     }
+
   }
 
   addClickListenersToTags();
@@ -472,7 +473,7 @@
 
       /* [DONE] generate code of a link and add it to allTagsHTML */
 
-      allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag} (${allTags[tag]})</a></li>`;
+      allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag}</a>&nbsp;&nbsp;</li>`;
 
       /* [DONE] END LOOP: for each tag in allTags */
 
