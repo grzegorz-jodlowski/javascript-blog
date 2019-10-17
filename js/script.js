@@ -1,5 +1,6 @@
 {
   'use strict';
+
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
@@ -7,11 +8,14 @@
     optArticleAuthorSelector = '.post-author',
     optTagsListSelector = '.tags.list',
     optCloudClassCount = 5,
-    optCloudClassPrefix = 'tag-size-';
+    optCloudClassPrefix = 'tag-size-',
+    optTagSelector = '[href^="#tag-"]';
 
   const titleClickHandler = function (event) {
     event.preventDefault();
+
     const clickedElement = this;
+
     console.log('Link was clicked!');
 
     /* [DONE] remove class 'active' from all article links  */
@@ -33,7 +37,6 @@
     const activeArticles = document.querySelectorAll('.posts article.active');
 
     for (let activeArticle of activeArticles) {
-
       activeArticle.classList.remove('active');
     }
 
@@ -56,17 +59,18 @@
   };
 
   function generateTitleLinks(customSelector = '') {
-
     console.log('funkcja ruszyła...');
 
     /* [DONE] remove all links from "ALL POSTS" column */
 
     const titleList = document.querySelector(optTitleListSelector);
+
     titleList.innerHTML = '';
 
     /* [DONE] catch all articles */
 
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
+
     console.log(articles);
 
     // to third method: let entireHTML = "";
@@ -74,20 +78,20 @@
     /* in all articles: */
     /* [DONE] find id of article and save it to variable */
     for (let article of articles) {
-
-
       const articleId = article.getAttribute('id');
-      console.log(articleId);
 
+      console.log(articleId);
 
       /* [DONE] find element with title and save it to variable */
 
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
       console.log(articleTitle);
 
       /* [DONE] create HTML code based on id and title and save it to variable */
 
       const htmlCode = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
+
       console.log(htmlCode);
 
       /* [DONE] insert new HTML code to "ALL POSTS" column */
@@ -120,6 +124,7 @@
     /* [DONE] find all articles */
 
     const articles = document.querySelectorAll(optArticleSelector);
+
     console.log(articles);
 
     /* [DONE] START LOOP: for every article: */
@@ -129,6 +134,7 @@
       /* [DONE] find tags wrapper */
 
       const htmlTagsWrapper = article.querySelector(optArticleTagSelector);
+
       console.log(htmlTagsWrapper);
 
       /* [DONE] make html variable with empty string */
@@ -138,6 +144,7 @@
       /* [DONE] get tags from data-tags attribute */
 
       const articleTagsString = article.getAttribute('data-tags');
+
       console.log(articleTagsString);
 
       /* [DONE] split tags into array */
@@ -149,7 +156,6 @@
       /* [DONE] START LOOP: for each tag */
 
       for (let tag of articleTagsArray) {
-
         /* [DONE] generate HTML of the link */
 
         const linkHtml = `<li><a href="#tag-${tag}">${tag}</a>&nbsp;&nbsp;</li>`;
@@ -204,7 +210,6 @@
     /* [DONE] START LOOP: for each active tag link */
 
     for (let activeTag of allActiveTags) {
-
       /* remove class active */
 
       activeTag.classList.remove('active');
@@ -241,7 +246,7 @@
 
     /* [DONE] find all links to tags */
 
-    const allLinksToTag = document.querySelectorAll(optArticleTagSelector + ' a');
+    const allLinksToTag = document.querySelectorAll(optTagSelector);
     console.log(allLinksToTag);
 
     /* [DONE] START LOOP: for each link */
@@ -257,8 +262,6 @@
     }
 
   }
-
-  addClickListenersToTags();
 
   function generateAuthors() {
 
@@ -293,7 +296,6 @@
   }
 
   generateAuthors();
-
 
   function authorClichHandler(event) {
 
@@ -486,7 +488,7 @@
 
   }
 
-
   generateTagsList();
 
+  addClickListenersToTags();
 }
