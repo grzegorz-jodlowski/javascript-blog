@@ -394,8 +394,13 @@
   }
 
   function calculateTagClass(count, params) {
+    const normalizedCount = count - params.min;
+    const normalizedMax = params.max - params.min;
+    const percentage = normalizedCount / normalizedMax;
+    const classNumber = Math.floor((optCloudClassCount - 1) * percentage + 1);
 
 
+    return optCloudClassPrefix + classNumber;
   }
 
   function generateTagsList() {
@@ -467,7 +472,7 @@
 
       /* [DONE] generate code of a link and add it to allTagsHTML */
 
-      allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag}(${allTags[tag]})</a></li>`;
+      allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag} (${allTags[tag]})</a></li>`;
 
       /* [DONE] END LOOP: for each tag in allTags */
 
@@ -479,6 +484,7 @@
 
 
   }
+
 
   generateTagsList();
 
