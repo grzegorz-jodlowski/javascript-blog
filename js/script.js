@@ -7,6 +7,7 @@
     optArticleTagSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
     optTagsListSelector = '.tags.list',
+    optAuthorsListSelector = '.authors.list',
     optCloudClassCount = 5,
     optCloudClassPrefix = 'tag-size-',
     optTagSelector = '[href^="#tag-"]';
@@ -295,7 +296,78 @@
 
   }
 
+  function generateAuthorsList() {
+
+    /* [DONE] create a new variable allTags with an empty object */
+
+    let allAuthors = {};
+
+    /* [DONE] find all articles */
+
+    const everyArticles = document.querySelectorAll(optArticleSelector);
+    console.log(everyArticles);
+
+    /* [DONE] START LOOP: for every article: */
+
+    for (let article of everyArticles) {
+
+      /* [DONE] get authors from data-author attribute */
+
+      const articleAuthorStr = article.getAttribute('data-author');
+      console.log(articleAuthorStr);
+
+      /* [DONE] check if this tag is NOT already in allTags */
+
+      if (!allAuthors.hasOwnProperty(articleAuthorStr)) {
+
+        /* [DONE] add tag to allTAgs object */
+
+        allAuthors[articleAuthorStr] = 1;
+
+      } else {
+
+        /* if it was add 1 */
+
+        allAuthors[articleAuthorStr]++;
+      }
+
+
+
+      /* [DONE] END LOOP: for every article: */
+
+    }
+
+    /* [DONE] find list of tags in right column */
+
+    const authorList = document.querySelector(optAuthorsListSelector);
+
+    /* [DONE] create variable for all links HTML code */
+
+    let allAuthorsHTML = '';
+
+    /* [DONE] START LOOP: for each tag in allTags */
+
+    for (let author in allAuthors) {
+
+      /* [DONE] generate code of a link and add it to allTagsHTML */
+
+      allAuthorsHTML += `<li><a href="#author-${author}">${author} (</a>&nbsp;&nbsp;</li>`;
+
+      /* [DONE] END LOOP: for each tag in allTags */
+
+    }
+
+    /* [DONE] add html from allTagsHTML to tagList */
+
+    authorList.innerHTML = allAuthorsHTML;
+
+
+  }
+
+
   generateAuthors();
+
+  generateAuthorsList();
 
   function authorClichHandler(event) {
 
