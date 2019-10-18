@@ -1,4 +1,5 @@
 {
+
   'use strict';
 
   const optArticleSelector = '.post',
@@ -10,7 +11,8 @@
     optAuthorsListSelector = '.authors.list',
     optCloudClassCount = 5,
     optCloudClassPrefix = 'tag-size-',
-    optTagSelector = '[href^="#tag-"]';
+    optTagSelector = '[href^="#tag-"]',
+    optAuthorSelector = '[href^="#author-"]';
 
   const titleClickHandler = function (event) {
     event.preventDefault();
@@ -428,7 +430,7 @@
 
     /* [DONE] find all links to authors */
 
-    const authorLinks = document.querySelectorAll(optArticleAuthorSelector + ' a');
+    const authorLinks = document.querySelectorAll(optAuthorSelector);
     console.log(authorLinks);
 
     /* [DONE] START LOOP: for each link */
