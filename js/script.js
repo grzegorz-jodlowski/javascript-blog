@@ -215,7 +215,6 @@
 
       activeTag.classList.remove('active');
 
-
       /* END LOOP: for each active tag link */
 
     }
@@ -298,7 +297,7 @@
 
   function generateAuthorsList() {
 
-    /* [DONE] create a new variable allTags with an empty object */
+    /* [DONE] create a new variable allUthors with an empty object */
 
     let allAuthors = {};
 
@@ -316,11 +315,11 @@
       const articleAuthorStr = article.getAttribute('data-author');
       console.log(articleAuthorStr);
 
-      /* [DONE] check if this tag is NOT already in allTags */
+      /* [DONE] check if this author is NOT already in allAuthors */
 
       if (!allAuthors.hasOwnProperty(articleAuthorStr)) {
 
-        /* [DONE] add tag to allTAgs object */
+        /* [DONE] add tag to allAuthors object */
 
         allAuthors[articleAuthorStr] = 1;
 
@@ -331,13 +330,11 @@
         allAuthors[articleAuthorStr]++;
       }
 
-
-
       /* [DONE] END LOOP: for every article: */
 
     }
 
-    /* [DONE] find list of tags in right column */
+    /* [DONE] find list of authors in right column */
 
     const authorList = document.querySelector(optAuthorsListSelector);
 
@@ -345,25 +342,23 @@
 
     let allAuthorsHTML = '';
 
-    /* [DONE] START LOOP: for each tag in allTags */
+    /* [DONE] START LOOP: for each author in allAuthors */
 
     for (let author in allAuthors) {
 
-      /* [DONE] generate code of a link and add it to allTagsHTML */
+      /* [DONE] generate code of a link and add it to allAuthorsHTML */
 
-      allAuthorsHTML += `<li><a href="#author-${author}">${author} (</a>&nbsp;&nbsp;</li>`;
+      allAuthorsHTML += `<li><a href="#author-${author}">${author} (${allAuthors[author]})</a>&nbsp;&nbsp;</li>`;
 
-      /* [DONE] END LOOP: for each tag in allTags */
+      /* [DONE] END LOOP: for each author in allAuthors */
 
     }
 
-    /* [DONE] add html from allTagsHTML to tagList */
+    /* [DONE] add html from allAuthorsHTML to authorList */
 
     authorList.innerHTML = allAuthorsHTML;
 
-
   }
-
 
   generateAuthors();
 
@@ -456,15 +451,14 @@
     const counter = [];
 
     for (let tag in tags) {
-
       counter.push(tags[tag]);
 
     }
     console.log(counter);
+
     return {
       min: Math.min(...counter),
       max: Math.max(...counter)
-
     };
   }
 
@@ -556,7 +550,6 @@
     /* [DONE] add html from allTagsHTML to tagList */
 
     tagList.innerHTML = allTagsHTML;
-
 
   }
 
