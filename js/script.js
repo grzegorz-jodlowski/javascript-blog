@@ -28,6 +28,12 @@
     },
   };
 
+  const templates = {
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+    articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
+    articleAuthor: Handlebars.compile(document.querySelector('#template-article-author').innerHTML),
+  };
+
   const titleClickHandler = function (event) {
     event.preventDefault();
 
@@ -107,7 +113,10 @@
 
       /* [DONE] create HTML code based on id and title and save it to variable */
 
-      const htmlCode = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
+      //const htmlCode = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
+
+      const linkHTMLData = { id: articleId, title: articleTitle };
+      const htmlCode = templates.articleLink(linkHTMLData);
 
       console.log(htmlCode);
 
@@ -175,8 +184,11 @@
       for (let tag of articleTagsArray) {
         /* [DONE] generate HTML of the link */
 
-        const linkHtml = `<li><a href="#tag-${tag}">${tag}</a>&nbsp;&nbsp;</li>`;
-        console.log(linkHtml);
+        const linkHTMLData = { tag: tag };
+        const linkHtml = templates.articleTag(linkHTMLData);
+
+        //const linkHtml = `<li><a href="#tag-${tag}">${tag}</a>&nbsp;&nbsp;</li>`;
+        //console.log(linkHtml);
 
         /* [DONE] add generated code to html variable */
 
@@ -302,8 +314,11 @@
 
       /* [DONE] generate HTML of the link */
 
-      authorTitle.innerHTML = `<a href="#author-${authorAtribute}">by ${authorAtribute}</a>`;
-      console.log(authorTitle);
+      const linkHtmlData = { author: authorAtribute };
+      authorTitle.innerHTML = templates.articleAuthor(linkHtmlData);
+
+      //authorTitle.innerHTML = `<a href="#author-${authorAtribute}">by ${authorAtribute}</a>`;
+      //console.log(authorTitle);
 
       /* [DONE] END LOOP: for every article: */
 
