@@ -32,6 +32,8 @@
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
     articleAuthor: Handlebars.compile(document.querySelector('#template-article-author').innerHTML),
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+    authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML),
   };
 
   const titleClickHandler = function (event) {
@@ -371,7 +373,9 @@
 
     /* [DONE] create variable for all links HTML code */
 
-    let allAuthorsHTML = '';
+    //let allAuthorsHTML = '';
+
+    const allAuthorsData = {authors: []};
 
     /* [DONE] START LOOP: for each author in allAuthors */
 
@@ -379,7 +383,12 @@
 
       /* [DONE] generate code of a link and add it to allAuthorsHTML */
 
-      allAuthorsHTML += `<li><a href="#author-${author}">${author} (${allAuthors[author]})</a>&nbsp;&nbsp;</li>`;
+      //allAuthorsHTML += `<li><a href="#author-${author}">${author} (${allAuthors[author]})</a>&nbsp;&nbsp;</li>`;
+
+      allAuthorsData.authors.push({
+        author: author,
+        count: allAuthors[author]
+      });
 
       /* [DONE] END LOOP: for each author in allAuthors */
 
@@ -387,7 +396,7 @@
 
     /* [DONE] add html from allAuthorsHTML to authorList */
 
-    authorList.innerHTML = allAuthorsHTML;
+    authorList.innerHTML = templates.authorCloudLink(allAuthorsData);
 
   }
 
@@ -564,7 +573,9 @@
 
     /* [DONE] create variable for all links HTML code */
 
-    let allTagsHTML = '';
+    //let allTagsHTML = '';
+
+    const allTagsData = {tags: []};
 
     /* [DONE] START LOOP: for each tag in allTags */
 
@@ -572,7 +583,13 @@
 
       /* [DONE] generate code of a link and add it to allTagsHTML */
 
-      allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag}</a>&nbsp;&nbsp;</li>`;
+      //allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag}</a>&nbsp;&nbsp;</li>`;
+
+      allTagsData.tags.push({
+        tag: tag,
+        count: allTags[tag],
+        className: calculateTagClass(allTags[tag], tagsParams)
+      });
 
       /* [DONE] END LOOP: for each tag in allTags */
 
@@ -580,7 +597,10 @@
 
     /* [DONE] add html from allTagsHTML to tagList */
 
-    tagList.innerHTML = allTagsHTML;
+    //tagList.innerHTML = allTagsHTML;
+
+    tagList.innerHTML = templates.tagCloudLink(allTagsData);
+    console.log(allTagsData);
 
   }
 
