@@ -375,7 +375,7 @@
 
     //let allAuthorsHTML = '';
 
-    const allAuthorsData = {authors: []};
+    const allAuthorsData = { authors: [] };
 
     /* [DONE] START LOOP: for each author in allAuthors */
 
@@ -575,7 +575,7 @@
 
     //let allTagsHTML = '';
 
-    const allTagsData = {tags: []};
+    const allTagsData = { tags: [] };
 
     /* [DONE] START LOOP: for each tag in allTags */
 
