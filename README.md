@@ -29,6 +29,8 @@ This
 - HTML
 - CSS
 - SCSS
+- GIT
+- npm
 - JavaScript
 
 </br>
