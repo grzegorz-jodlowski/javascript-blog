@@ -42,7 +42,8 @@ Simple blog for displaying articles, table of contents and tag cloud. It allows 
 - create a tag cloud based on the number of tag occurrences in articles,
 - use "this" keyword in various contexts,
 - block the default event action by event.preventDefault();
--
+- debug code in VS code (using <a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome">Debugger for Chrome</a> plugin),
+- configure, install and use tools for automatic code checking (ex. <a href="https://eslint.org/">ESLint</a> for JS, <a href="https://stylelint.io/">StyleLint</a> for SCSS),
 
 
 </br>
