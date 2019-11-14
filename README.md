@@ -43,16 +43,59 @@ Simple blog for displaying articles, table of contents and tag cloud. It allows 
 - use "this" keyword in various contexts,
 - block the default event action by event.preventDefault();
 - debug code in VS code (using <a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome">Debugger for Chrome</a> plugin),
+- use arrays and objects in more advanced way,
 - configure, install and use tools for automatic code checking (ex. <a href="https://eslint.org/">ESLint</a> for JS, <a href="https://stylelint.io/">StyleLint</a> for SCSS),
-
+- use tool for rapid prototyping code online (<a href="https://codepen.io/">CodePen</a>),
+- separate code written in different languages into separate files,
+- use HTML templates (ex. <a href="https://handlebarsjs.com/">Handlebars</a>),
 
 </br>
 
 ## <a name="interesting"></a>Interesting code snippet (for me of course 😉)
-- c
+- loops in Handlebars templates
 
-```css
+```html
+  <script id="template-author-cloud-link" type="text/x-handlebars-template">
+    {{#each authors}}
+      <li><a href="#author-{{ author }}">{{ author }} ({{ count }})</a>&nbsp;&nbsp;</li>
+    {{/each}}
+  </script>
+```
 
+- ESLint config file
+
+```json
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 2015
+    },
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single",
+            {"allowTemplateLiterals": true}
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-console": [
+            "off"
+        ]
+    }
 }
 ```
 
