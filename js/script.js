@@ -68,7 +68,6 @@
     /* [DONE] get 'href' attribute from the clicked link */
 
     const hrefAtribute = clickedElement.getAttribute('href');
-
     console.log(hrefAtribute);
 
     /* [DONE] find the correct article using the selector (value of 'href' attribute) */
@@ -80,7 +79,6 @@
     /* [DONE] add class 'active' to the correct article */
 
     clickedArticle.classList.add('active');
-
   };
 
   function generateTitleLinks(customSelector = '') {
@@ -180,7 +178,6 @@
       const articleTagsArray = articleTagsString.split(' ');
       console.log(articleTagsArray);
 
-
       /* [DONE] START LOOP: for each tag */
 
       for (let tag of articleTagsArray) {
@@ -205,7 +202,6 @@
       htmlTagsWrapper.insertAdjacentHTML('beforeend', htmlCode);
 
       /* [DONE] END LOOP: for every article: */
-
     }
   }
 
@@ -246,7 +242,6 @@
       activeTag.classList.remove('active');
 
       /* END LOOP: for each active tag link */
-
     }
 
     /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
@@ -263,13 +258,11 @@
       links.classList.add('active');
 
       /* [DONE] END LOOP: for each found tag link */
-
     }
 
     /* [DONE] execute function "generateTitleLinks" with article selector as argument */
 
     generateTitleLinks('[data-tags~="' + tag + '"]');
-
   }
 
   function addClickListenersToTags() {
@@ -288,9 +281,7 @@
       link.addEventListener('click', tagClickHandler);
 
       /* [DONE] END LOOP: for each link */
-
     }
-
   }
 
   function generateAuthors() {
@@ -323,9 +314,7 @@
       //console.log(authorTitle);
 
       /* [DONE] END LOOP: for every article: */
-
     }
-
   }
 
   function generateAuthorsList() {
@@ -364,7 +353,6 @@
       }
 
       /* [DONE] END LOOP: for every article: */
-
     }
 
     /* [DONE] find list of authors in right column */
@@ -397,7 +385,6 @@
     /* [DONE] add html from allAuthorsHTML to authorList */
 
     authorList.innerHTML = templates.authorCloudLink(allAuthorsData);
-
   }
 
   generateAuthors();
@@ -439,7 +426,6 @@
       article.classList.remove('active');
 
       /* [DONE] END LOOP: for each active tag link */
-
     }
 
     /* [DONE] find all author links with "href" attribute equal to the "href" constant */
@@ -456,7 +442,6 @@
       link.classList.add('active');
 
       /* [DONE] END LOOP: for each found tag link */
-
     }
 
     /* [DONE] execute function "generateTitleLinks" with article selector as argument */
@@ -480,7 +465,6 @@
       link.addEventListener('click', authorClichHandler);
 
       /* [DONE] END LOOP: for each link */
-
     }
   }
 
@@ -507,7 +491,6 @@
     const normalizedMax = params.max - params.min;
     const percentage = normalizedCount / normalizedMax;
     const classNumber = Math.floor((opts.tagSizes.count - 1) * percentage + 1);
-
 
     return opts.tagSizes.classPrefix + classNumber;
   }
@@ -559,9 +542,7 @@
         /* [DONE] END LOOP: for each tag */
 
       }
-
       /* [DONE] END LOOP: for every article: */
-
     }
 
     /* [DONE] find list of tags in right column */
@@ -592,7 +573,6 @@
       });
 
       /* [DONE] END LOOP: for each tag in allTags */
-
     }
 
     /* [DONE] add html from allTagsHTML to tagList */
@@ -601,7 +581,6 @@
 
     tagList.innerHTML = templates.tagCloudLink(allTagsData);
     console.log(allTagsData);
-
   }
 
   generateTagsList();

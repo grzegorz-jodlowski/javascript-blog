@@ -2,8 +2,6 @@
 <a href="https://grzegorz-jodlowski.github.io/javascript-blog/"><img src="logo5.jpg" title="logo" alt="title of blog: 'my blog'"></a>
 </p>
 
-
-
 # <p align="center">📖 JavaScript Blog</p>
 <p align="center">Project for JavaScript learning</p>
 
