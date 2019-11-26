@@ -223,7 +223,6 @@
     const href = clickedElement.getAttribute('href');
     console.log(href);
 
-
     /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
 
     const tag = href.replace('#tag-', '');
@@ -243,7 +242,6 @@
 
       /* END LOOP: for each active tag link */
     }
-
     /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
     const linksEqualToClicked = document.querySelectorAll('a[href="' + href + '"]');
@@ -259,7 +257,6 @@
 
       /* [DONE] END LOOP: for each found tag link */
     }
-
     /* [DONE] execute function "generateTitleLinks" with article selector as argument */
 
     generateTitleLinks('[data-tags~="' + tag + '"]');
@@ -351,10 +348,8 @@
 
         allAuthors[articleAuthorStr]++;
       }
-
       /* [DONE] END LOOP: for every article: */
     }
-
     /* [DONE] find list of authors in right column */
 
     const authorList = document.querySelector(select.listOf.authors);
@@ -377,11 +372,8 @@
         author: author,
         count: allAuthors[author]
       });
-
       /* [DONE] END LOOP: for each author in allAuthors */
-
     }
-
     /* [DONE] add html from allAuthorsHTML to authorList */
 
     authorList.innerHTML = templates.authorCloudLink(allAuthorsData);
@@ -427,7 +419,6 @@
 
       /* [DONE] END LOOP: for each active tag link */
     }
-
     /* [DONE] find all author links with "href" attribute equal to the "href" constant */
 
     const linksEqualToClicked = document.querySelectorAll('a[href="' + href + '"]');
@@ -538,13 +529,10 @@
 
           allTags[tag]++;
         }
-
         /* [DONE] END LOOP: for each tag */
-
       }
       /* [DONE] END LOOP: for every article: */
     }
-
     /* [DONE] find list of tags in right column */
 
     const tagList = document.querySelector(select.listOf.tags);
@@ -559,11 +547,8 @@
     const allTagsData = { tags: [] };
 
     /* [DONE] START LOOP: for each tag in allTags */
-
     for (let tag in allTags) {
-
       /* [DONE] generate code of a link and add it to allTagsHTML */
-
       //allTagsHTML += `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag}</a>&nbsp;&nbsp;</li>`;
 
       allTagsData.tags.push({
@@ -571,10 +556,8 @@
         count: allTags[tag],
         className: calculateTagClass(allTags[tag], tagsParams)
       });
-
       /* [DONE] END LOOP: for each tag in allTags */
     }
-
     /* [DONE] add html from allTagsHTML to tagList */
 
     //tagList.innerHTML = allTagsHTML;
