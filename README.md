@@ -13,7 +13,9 @@
 - [Technologies used](#technologies)
 - [What I learned?](#what)
 - [Interesting code snippet](#interesting)
-- [GitHub Pages](#gitHub)
+- [Installation](#install)
+- [NPM scripts](#scripts)
+- [Website (on GitHub Pages)](#site)
 
 </br>
 
@@ -99,7 +101,37 @@ Simple blog for displaying articles, table of contents and tag cloud. It allows 
 
 </br>
 
-## <a name="gitHub"></a>GitHub Pages
+## <a name="install"></a>Installation and quick start
+
+- use the package manager [npm](https://www.npmjs.com/get-npm) to install dependencies:
+
+```bash
+npm install
+
+or
+
+npm i
+```
+- run watch mode to start the server, constantly refreshing and more:
+
+```bash
+npm run watch
+```
+
+<br/>
+
+
+## <a name="scripts"></a>NPM scripts
+
+There are 3 main scripts to speed up work:
+
+- `build`: builds a project,
+- `watch`: observes changes and starts working preview,
+- `test`: starting the tests of html, SCSS and js structure,
+
+<br/>
+
+## <a name="site"></a>Website (on GitHub Pages)
 <a href="https://grzegorz-jodlowski.github.io/javascript-blog/">JavaScript Blog</a>
 
 
