@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://grzegorz-jodlowski.github.io/javascript-blog/"><img src="logo5.jpg" title="logo" alt="title of blog: 'my blog'"></a>
+<a href="https://grzegorz-jodlowski.github.io/javascript-blog/"><img src="images/logo5.jpg" title="logo" alt="title of blog: 'my blog'"></a>
 </p>
 
 # <p align="center">📖 JavaScript Blog</p>
@@ -10,7 +10,7 @@
 ## Table of Contents
 
 - [What's this project about?](#about)
-- [Technologies used](#technologies)
+- [Technologies used](#tech)
 - [What I learned?](#what)
 - [Interesting code snippet](#interesting)
 - [Installation](#install)
@@ -25,7 +25,7 @@ Simple blog for displaying articles, table of contents and tag cloud. It allows 
 
 </br>
 
-## <a name="technologies"></a>Technologies used
+## <a name="tech"></a>Technologies used
 - HTML
 - CSS
 - SCSS
